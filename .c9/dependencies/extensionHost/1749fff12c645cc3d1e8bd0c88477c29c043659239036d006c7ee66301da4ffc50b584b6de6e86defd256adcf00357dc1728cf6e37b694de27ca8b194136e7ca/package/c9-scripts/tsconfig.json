@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "ES2015",
+        "module": "commonjs",
+        "noEmit": true,
+        "strict": true,
+        "noImplicitAny": false,
+        "strictNullChecks": false,
+        "moduleResolution": "node",
+        "typeRoots": [
+            "../node_modules/@types"
+        ],
+    }
+}

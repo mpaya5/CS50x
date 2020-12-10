@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<title>Proyecto con JavaScript</title>
+
+		<!-- Estilos CSS -->
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+		<link id="theme" rel="stylesheet" type="text/css" href="css/green.css" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+		<!-- jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="js/jquery-ui/jquery-ui.min.css" />
+		<link rel="stylesheet" href="js/jquery-ui/jquery-ui.structure.min.css" />
+		<link rel="stylesheet" href="js/jquery-ui/jquery-ui.theme.min.css" />
+		<script type="text/javascript" src="js/jquery-ui/jquery-ui.min.js"></script>
+
+		<!-- Plugin validacion -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+
+		<!-- Mis Scripts -->
+		<script type="text/javascript" src="js/main.js"></script>
+	</head>
+	<body>
+		<div id="selector-theme">
+			<div id="to-green"></div>
+			<div id="to-red"></div>
+			<div id="to-blue"></div>
+		</div>
+
+		<section id="global">
+
+			<!-- Cabecera -->
+			<header>
+				<div id="logo">
+					<h1 class="display-5">Blog With JS</h1>
+				</div>
+
+				<div class="clearfix"></div>
+
+				<nav id="menu">
+					<ul>
+						<li><a href="index.html">Index</a></li>
+						<li><a href="reloj.html">Clock</a></li>
+						<li><a href="about.html">About</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</nav>
+			</header>
+
+
+			<!-- Contenido -->
+			<section id="content">
+
+				<div id="box">
+					<!-- Cargar formulario -->
+					<h2>Contact</h2>
+
+					<form action="" method="POST" id="form_contact">
+						<label for="name">Name</label>
+						<input type="text" class="form-control" name="name" data-validation="alphanumeric" />
+
+						<label for="surname">Suname</label>
+						<input type="text" class="form-control" name="surname" data-validation="alphanumeric" />
+
+						<label>Email</label>
+						<input type="email" class="form-control" name="email" data-validation="email"/>
+
+						<label for="sex">Gender</label>
+						<select name="sex" class="form-control" data-validation="required">
+							<option value="men">Men</option>
+							<option value="woman">Woman</option>
+						</select>
+
+						<label for="date">Date of Birth</label>
+						<input type="text"  class="form-control" name="date" data-validation="date" data-validation-format="dd-mm-yyyy"/>
+
+						<label for="years">Age</label>
+						<input type="number" name="years" data-validation="number"/>
+
+						<input type="submit" class="btn" value="Send" />
+					</form>
+
+				</div>
+
+				<aside id="sidebar">
+					<div id="about">
+						<h4><span>¿Who am I?</span></h4>
+						<img src="img/caracol.jpg" />
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet malesuada erat, ac ullamcorper justo.</p>
+					</div>
+
+					<div id="login">
+						<h4><span>Log In</span></h4>
+						<form>
+							<label for="name">
+								Name
+							</label>
+							<input type="text" name="name" id="form_name"/>
+
+							<label for="email">
+								Email
+							</label>
+							<input type="text" name="email" />
+
+							<label for="password">
+								Password
+							</label>
+							<input type="password" name="password" />
+
+							<input type="submit" value="Log In" />
+						</form>
+					</div>
+
+				</aside>
+
+				<div class="clearfix"></div>
+			</section>
+
+		</section>
+
+		<footer>
+			Design & Created by: <a href="http://yumewebs.com/">Yumewebs</a> &copy;
+
+			<a href="#" class="subir">Go to the top</a>
+		</footer>
+	</body>
+</html>

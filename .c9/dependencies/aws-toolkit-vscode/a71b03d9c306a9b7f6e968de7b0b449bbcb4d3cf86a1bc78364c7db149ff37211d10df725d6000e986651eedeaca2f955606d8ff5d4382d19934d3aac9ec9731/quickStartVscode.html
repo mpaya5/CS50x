@@ -1,0 +1,273 @@
+<h1 id="a-idtopaaws-toolkit"><a id="top"></a>AWS Toolkit</h1>
+<p>AWS Toolkit is an extension for Visual Studio Code that enables you to interact with <a href="https://aws.amazon.com/what-is-aws/">Amazon Web Services (AWS)</a>.
+See the <a href="https://docs.aws.amazon.com/console/toolkit-for-vscode/welcome">AWS Toolkit for Visual Studio Code user guide</a> for complete documentation.</p>
+<p>See <a href="#additional-setup-steps">Setup</a> for installation requirements, or <a href="#get-help">Get help</a> for support.</p>
+<h1 id="a-idfeaturesafeatures"><a id="features"></a>Features</h1>
+<ul>
+<li><a href="#ui-components-aws-expl">AWS Explorer</a><ul>
+<li>CloudFormation stacks</li>
+<li>CloudWatch Logs</li>
+<li>EventBridge schemas</li>
+<li>Lambda functions</li>
+<li>S3 explorer</li>
+<li>Step Functions</li>
+</ul>
+</li>
+<li><a href="#ui-components-cdk-expl">CDK Explorer</a></li>
+<li><a href="#sam-and-lambda">AWS Serverless Applications (SAM)</a></li>
+<li><a href="#cloudwatchlogs">Amazon CloudWatch Logs</a></li>
+<li><a href="#eventbridge">Amazon EventBridge Schemas</a></li>
+<li><a href="#ecs-files">Amazon ECS task definition files</a></li>
+<li><a href="#sfn-files">AWS Step Functions</a></li>
+<li><a href="#ssm-files">AWS Systems Manager</a></li>
+<li><a href="#aws-commands"><code>AWS:</code> Commands</a></li>
+</ul>
+<hr>
+<h2 id="a-idui-components-aws-explaaws-explorer"><a id="ui-components-aws-expl"></a>AWS Explorer</h2>
+<p>The <strong>AWS Explorer</strong> provides access to the AWS services that you can work with when using the Toolkit. To see the <strong>AWS Explorer</strong>, choose the <strong>AWS</strong> icon in the <strong>Activity bar</strong>.</p>
+<p><img src="!!EXTENSIONROOT!!/resources/marketplace/vscode/overview-aws-explorer.png" alt="Overview, AWS Explorer"></p>
+<p>{ <a href="#top">Return to Top</a> }</p>
+<h2 id="a-idui-components-cdk-explacdk-explorer"><a id="ui-components-cdk-expl"></a>CDK Explorer</h2>
+<p>The <strong>AWS CDK Explorer</strong> enables you to work with <a href="https://aws.amazon.com/cdk/">AWS Cloud Development Kit (CDK)</a> applications. It shows a top-level view of your CDK applications that have been sythesized in your workspace.</p>
+<p><img src="!!EXTENSIONROOT!!/resources/marketplace/vscode/overview-cdk.png" alt="Overview, AWS CDK Explorer"></p>
+<p>With the CDK explorer, you can navigate the CDK application&#39;s infrastructure stacks, resources, and policies.</p>
+<p><img src="!!EXTENSIONROOT!!/resources/marketplace/vscode/cdk-tree-view.png" alt="AWS CDK Tree View"></p>
+<p>For full details see the <a href="https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/cdk-explorer.html">AWS CDK Explorer</a> in the user guide.</p>
+<p>{ <a href="#top">Return to Top</a> }</p>
+<hr>
+<h2 id="a-idsam-and-lambdaa-aws-serverless-applications"><a id="sam-and-lambda"></a> AWS Serverless Applications</h2>
+<p>The AWS Toolkit enables you to develop <a href="https://aws.amazon.com/serverless/">AWS serverless applications</a> locally. It also provides <em>CodeLenses</em> in VS Code to do the following:</p>
+<ul>
+<li>Use SAM (serverless application model) templates to build and debug your locally developed AWS serverless applications.</li>
+<li>Run selected <a href="https://aws.amazon.com/lambda/">AWS Lambda</a> functions.</li>
+</ul>
+<p>To start debugging with a SAM template, click the <code>Add Debug Configuration</code> <em>CodeLens</em> in the template file.</p>
+<p><img src="!!EXTENSIONROOT!!/resources/marketplace/vscode/Codelens-YAML-template.png" alt="Add Debug Configuration Template"></p>
+<h6 id="the-codelens-indicator-in-the-sam-template-allows-you-to-add-a-debug-configuration-for-the-serverless-applicationh6">The <em>CodeLens</em> indicator in the SAM template allows you to add a debug configuration for the serverless application.</h6></h6>
+<p>Alternatively, you can run and debug just the AWS Lambda function and exclude other resources defined by the SAM template. Again, use a <em>CodeLens</em> indicator for an AWS Lambda-function handler. (A <em>handler</em> is a function that Lambda calls to start execution of a Lambda function.)</p>
+<p><img src="!!EXTENSIONROOT!!/resources/marketplace/vscode/Codelens-direct-function.png" alt="Add Debug Configuration Direct"></p>
+<h6 id="the-codelens-indicator-in-the-application-file-lets-you-add-a-debug-configuration-for-a-selected-aws-lambda-function">The <em>CodeLens</em> indicator in the application file lets you add a debug configuration for a selected AWS Lambda function.</h6>
+<p>When you run a debug session, the status and results are shown in the <strong>OUTPUT</strong> panel when the <strong>AWS Toolkit</strong> output channel is selected.</p>
+<p><img src="!!EXTENSIONROOT!!/resources/marketplace/vscode/sam-configure-and-run-still-2.png" alt="Configure and Run 2"></p>
+<h6 id="after-a-local-run-is-complete-the-output-appears-in-the-output-tab">After a local run is complete, the output appears in the <strong>OUTPUT</strong> tab.</h6>
+<p>When you&#39;re satisfied with performance, you can <a href="https://docs.aws.amazon.com/console/toolkit-for-vscode/deploy-serverless-app">deploy your serverless application</a>. The SAM template is converted to a CloudFormation template, which is then used to deploy all the application&#39;s assets to the AWS Cloud.</p>
+<h3 id="launch-config-auto-completion-intellisense">Launch config auto-completion (&quot;IntelliSense&quot;)</h3>
+<p>The <code>Add Debug Configuration</code> <em>CodeLens</em> creates launch configs of type
+<code>aws-sam</code> in the VS Code <code>launch.json</code> file. You can also create these entries
+by hand.</p>
+<p>When editing <code>launch.json</code> configs, AWS Toolkit provides auto-completion and
+contextual documentation, as shown below.</p>
+<img src="./resources/marketplace/vscode/sam-launch-config.png" alt="Debug Configuration inline documentation" width="640"/>
+
+<h3 id="supported-runtimes">Supported runtimes</h3>
+<p>The Toolkit <em>local SAM debugging</em> feature supports these runtimes:</p>
+<ul>
+<li>C# (.NET Core 2.1)<ul>
+<li>.NET Core 3.1 is supported for run but not debug</li>
+</ul>
+</li>
+<li>JavaScript (Node.js 10.x, 12.x)</li>
+<li>Python (2.7, 3.6, 3.7, 3.8)</li>
+</ul>
+<p>For more information see <a href="https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/serverless-apps.html">Working with AWS Serverless Applications</a> in the user guide.</p>
+<p>{ <a href="#top">Return to Top</a> }</p>
+<hr>
+<h2 id="a-idcloudwatchlogsaamazon-cloudwatch-logs"><a id="cloudwatchlogs"></a>Amazon CloudWatch Logs</h2>
+<p>The AWS Toolkit provides support for <a href="https://aws.amazon.com/cloudwatch/">Amazon CloudWatch Logs</a>. Using the <a href="#ui-components-aws-expl">AWS Explorer</a> of the Toolkit, you can perform the following operations on Log Groups:</p>
+<ul>
+<li>List CloudWatch Log Groups</li>
+<li>View Log Streams for a Log Group</li>
+</ul>
+<p>Viewing a Log Stream will immediately load the most recent 10,000 lines or 1 MB of data (whichever is smaller), and their timestamps. From this view, users can access the following actions:</p>
+<ul>
+<li>Load older or newer log events</li>
+<li>Save currently-loaded Log Stream to a log file</li>
+<li>Copy Log Stream name</li>
+</ul>
+<p>Example:</p>
+<p><img src="!!EXTENSIONROOT!!/resources/marketplace/vscode/cloudwatch-logs.png" alt="View Log Groups"></p>
+<p>For full details, see <a href="https://docs.aws.amazon.com/console/toolkit-for-vscode/latest/userguide/cloudwatchlogs.html">Working with CloudWatch Logs</a> in the Toolkit&#39;s user guide.</p>
+<p>{ <a href="#top">Return to Top</a> }</p>
+<hr>
+<h2 id="a-ideventbridgeaamazon-eventbridge-schemas"><a id="eventbridge"></a>Amazon EventBridge Schemas</h2>
+<p>The AWS Toolkit provides support for <a href="https://aws.amazon.com/eventbridge">Amazon EventBridge</a> schemas. Using the <a href="#ui-components-aws-expl">AWS Explorer</a> of the Toolkit, you can perform the following operations on these schemas:</p>
+<ul>
+<li>View an available schema</li>
+<li>Search for an available schema</li>
+<li>Generate code for an available schema</li>
+</ul>
+<p>Example:</p>
+<p><img src="!!EXTENSIONROOT!!/resources/marketplace/vscode/eventbridge-search.png" alt="View Amazon EventBridge Schemas"></p>
+<p>For full details, see <a href="https://docs.aws.amazon.com/console/toolkit-for-vscode/eventbridge-schemas">Working with Amazon EventBridge Schemas</a> in the Toolkit&#39;s user guide.</p>
+<p>{ <a href="#top">Return to Top</a> }</p>
+<hr>
+<h2 id="a-idecs-filesaamazon-ecs-task-definition-files"><a id="ecs-files"></a>Amazon ECS task definition files</h2>
+<p>The AWS Toolkit provides support for <a href="https://aws.amazon.com/ecs">Amazon Elastic Container Service (Amazon ECS)</a>. With the Toolkit installed in VS Code, IntelliSense functionality is provided for Amazon ECS task-definition files that you are updating in the editor.</p>
+<p>Example:</p>
+<p><img src="!!EXTENSIONROOT!!/resources/marketplace/vscode/ecs-task-def-intellisense.png" alt="Amazon ECS IntelliSense for Task Definition Files"></p>
+<p>For full details, see <a href="https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/ecs.html">Working with Amazon Elastic Container Service</a> in the Toolkit&#39;s user guide.</p>
+<p>{ <a href="#top">Return to Top</a> }</p>
+<hr>
+<h2 id="a-idssm-filesaaws-systems-manager-documents"><a id="ssm-files"></a>AWS Systems Manager Documents</h2>
+<p>The AWS Toolkit provides support for <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-documents.html">AWS Systems Manager Documents</a>. With the Toolkit installed in VS Code, you have access to the following features when working on Automation Documents:</p>
+<ul>
+<li>Download, edit, and publish your Automation documents</li>
+<li>Code completion and validation for both formats of documents: YAML and JSON</li>
+<li>Templates and code snippets to help kickstart your Automation document</li>
+</ul>
+<p>Example:</p>
+<p><img src="!!EXTENSIONROOT!!/resources/marketplace/vscode/ssm-snippets.png" alt="AWS Systems Manager"></p>
+<p>For full details, see <a href="https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/ssmDocuments.html">Working with AWS Systems Manager Documents</a> in the Toolkit&#39;s user guide.</p>
+<p>{ <a href="#top">Return to Top</a> }</p>
+<hr>
+<h2 id="a-idsfn-filesaaws-step-functions"><a id="sfn-files"></a>AWS Step Functions</h2>
+<p>The AWS Toolkit provides support for <a href="https://docs.aws.amazon.com/step-functions">AWS Step Functions</a>. With the Toolkit installed in VS Code, working with state machines is a more streamlined process.</p>
+<ul>
+<li>Create, update, execute, and download state machines.</li>
+<li>See live graph visualizations of your state machine.</li>
+<li>Take advantage of features such as code completion and validation, and code snippets.</li>
+</ul>
+<p>Example:</p>
+<p><img src="!!EXTENSIONROOT!!/resources/marketplace/vscode/sfn-state-machine.png" alt="AWS Step Functions"></p>
+<p>For full details, see <a href="https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/stepfunctions.html">Working with AWS Step Functions</a> in the Toolkit&#39;s user guide.</p>
+<p>{ <a href="#top">Return to Top</a> }</p>
+<hr>
+<h2 id="a-idaws-commandsaaws-commands"><a id="aws-commands"></a><code>AWS:</code> Commands</h2>
+<p>The Toolkit provides commands (prefixed with <code>AWS:</code>) to the VS Code <em>command
+palette</em>, available by selecting <em>View &gt; Command Palette</em> or by typing
+<code>CTRL-SHIFT-p</code> (macOS: <code>CMD-SHIFT-p</code>).</p>
+<p><img src="!!EXTENSIONROOT!!/resources/marketplace/vscode/open-command-palette-codelens.gif" alt="Command Palette"></p>
+<table>
+<thead>
+<tr>
+<th align="left">AWS Command</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>AWS: About AWS Toolkit</code></td>
+<td align="left">Displays information about the AWS Toolkit.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: Connect to AWS</code></td>
+<td align="left">Connects the Toolkit to an AWS account. For more information, see <a href="https://docs.aws.amazon.com/console/toolkit-for-vscode/connect">Connecting to AWS</a> in the user guide.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: Copy Log Stream Name</code></td>
+<td align="left">Copies the name of the active CloudWatch Log Stream</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: Create a new Step Functions state machine</code></td>
+<td align="left">Generates a new Amazon States Language definition to use as the definition for a new Step Functions state machine. For more information, see <a href="https://docs.aws.amazon.com//toolkit-for-vscode/latest/userguide/bulding-stepfunctions.html#templates-stepfunctions">State Machine Templates</a> in the user guide.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: Create a new Issue on Github</code></td>
+<td align="left">Opens the AWS Toolkit&#39;s <a href="https://github.com/aws/aws-toolkit-vscode/issues/new/choose">New Issue page on Github</a>.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: Create a new Systems Manager Document locally</code></td>
+<td align="left">Creates a new Systems Manager Document from a template in either YAML or JSON</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: Create Credentials Profile</code></td>
+<td align="left">Creates an AWS credentials profile. For more information, see <a href="https://docs.aws.amazon.com/console/toolkit-for-vscode/setup-credentials">Setting Up Your AWS Credentials</a> in the user guide.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: Create new SAM Application</code></td>
+<td align="left">Generates a set of code files for a new AWS serverless application. For more information, see <a href="https://docs.aws.amazon.com/console/toolkit-for-vscode/create-sam">Creating a Serverless Application</a> in the user guide.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: Deploy SAM Application</code></td>
+<td align="left">Deploys a local serverless application to an AWS account. For more information, see <a href="https://docs.aws.amazon.com/console/toolkit-for-vscode/deploy-serverless-app">Deploying a Serverless Application</a> in the user guide.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: Detect SAM CLI</code></td>
+<td align="left">Checks whether the Toolkit can communicate correctly with the AWS SAM CLI that is installed.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: Focus on Explorer View</code></td>
+<td align="left">Opens the <strong>AWS: Explorer</strong> Side Bar, which we will simply call <a href="#ui-components-aws-expl"><em>the <strong>AWS Explorer</strong></em></a>, and then moves the focus there.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: Hide region from the Explorer</code></td>
+<td align="left">Hides an AWS Region from the <strong>AWS Explorer</strong>.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: Publish state machine to Step Functions</code></td>
+<td align="left">Creates or updates a remote state machine using the local Amazon States Language definition file. For more information, see <a href="https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/bulding-stepfunctions.html#starting-stepfunctions">Work With State Machines in VS Code</a> in the user guide.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: Publish a Systems Manager Document</code></td>
+<td align="left">Creates a new document or updates an existing document in your account using the currently open document.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: Render state machine graph</code></td>
+<td align="left">Renders the state machine definition into a graph visualization. For more information, see <a href="https://docs.aws.amazon.com//toolkit-for-vscode/latest/userguide/bulding-stepfunctions.html#bulding-stepfunctions-visualizations">State Machine Graph Visualization</a> in the user guide.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: Report an Issue</code></td>
+<td align="left">In the <a href="https://github.com/aws/aws-toolkit-vscode">GitHub repository</a> for the Toolkit, opens the page to <a href="https://github.com/aws/aws-toolkit-vscode/issues/new/choose">create a new issue</a>.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: Save Current Log Content To File</code></td>
+<td align="left">Saves currently-loaded CloudWatch Log Stream data to a local <code>.log</code> file.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: Show region in the Explorer</code></td>
+<td align="left">Displays an AWS Region in the <strong>AWS Explorer</strong>.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: Sign out</code></td>
+<td align="left">Disconnects the Toolkit from the currently-connected AWS account.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: Submit Quick Feedback...</code></td>
+<td align="left">Submit a private, one-way message and sentiment to the AWS Toolkit dev team. For larger issues that warrant conversations or bugfixes, please submit an issue in Github with the <strong>AWS: Create a New Issue on Github</strong> command.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: View AWS Toolkit Logs</code></td>
+<td align="left">Displays log files that contain general Toolkit diagnostic information.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: View Quick Start</code></td>
+<td align="left">Open this quick-start guide.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: View CDK Documentation</code></td>
+<td align="left">Opens the <a href="https://docs.aws.amazon.com/console/toolkit-for-vscode/aws-cdk-apps">user guide</a> for the CDK portion of the Toolkit.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: View Toolkit Documentation</code></td>
+<td align="left">Opens the <a href="https://docs.aws.amazon.com/console/toolkit-for-vscode/welcome">user guide</a> for the Toolkit.</td>
+</tr>
+<tr>
+<td align="left"><code>AWS: View Source on GitHub</code></td>
+<td align="left">Opens the <a href="https://github.com/aws/aws-toolkit-vscode">GitHub repository</a> for the Toolkit.</td>
+</tr>
+<tr>
+<td align="left"><code>Explorer: Focus on AWS CDK Explorer (Preview) View</code></td>
+<td align="left">Opens the <strong>Explorer</strong> Side Bar and expands the <strong>AWS CDK Explorer (Preview)</strong> View.</td>
+</tr>
+</tbody></table>
+<p>{ <a href="#top">Return to Top</a> }</p>
+<hr>
+<h1 id="a-idadditional-setup-stepsasetup"><a id="additional-setup-steps"></a>Setup</h1>
+<p>To access most features of the AWS Toolkit, complete the <a href="https://docs.aws.amazon.com/console/toolkit-for-vscode/getting-started">Setting Up</a> steps from the user guide.</p>
+<ol>
+<li><a href="https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/">Create an AWS account</a> (see also <a href="https://docs.aws.amazon.com/console/toolkit-for-vscode/setup-toolkit#setup-prereq">Prerequisites</a>).</li>
+<li><a href="https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/establish-credentials.html">Create and configure</a> your AWS credentials.</li>
+<li><a href="https://docs.aws.amazon.com/console/toolkit-for-vscode/connect">Connect the Toolkit</a> to AWS with those credentials.</li>
+</ol>
+<p>To develop <a href="https://aws.amazon.com/serverless/">serverless applications</a> with the Toolkit, you must <a href="https://docs.aws.amazon.com/console/toolkit-for-vscode/setup-toolchain">set up your toolchain</a> and do the following on the local machine where the Toolkit is installed:</p>
+<ol>
+<li>Install the <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html">AWS CLI</a> (Command Line Interface).</li>
+<li>Install and start <a href="https://docs.docker.com/install/">Docker</a>.</li>
+<li>Install the AWS <a href="https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html">SAM CLI</a>.</li>
+</ol>
+<p>{ <a href="#top">Return to Top</a> }</p>
+<hr>
+<h1 id="a-idget-helpaget-help"><a id="get-help"></a>Get help</h1>
+<p>For additional details on how to use the AWS Toolkit, see the <a href="https://docs.aws.amazon.com/console/toolkit-for-vscode/welcome">user guide</a>.</p>
+<p>To report issues with the Toolkit or to propose Toolkit code changes, see the <a href="https://github.com/aws/aws-toolkit-vscode">aws/aws-toolkit-vscode</a> repository on GitHub.</p>
+<p>You can also <a href="https://aws.amazon.com/contact-us/">contact AWS</a> directly.</p>
+<p>{ <a href="#top">Return to Top</a> }</p>

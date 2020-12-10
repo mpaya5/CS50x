@@ -1,0 +1,7 @@
+{
+    "name": "vscode-extension-telemetry",
+    "version": "1.0.0",
+    "description": "A module for using extension-telemetry in a Node project",
+    "main": "index.js",
+    "types": "index.d.ts"
+}

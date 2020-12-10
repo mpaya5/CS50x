@@ -1,0 +1,10 @@
+ /* this file is used by ts-mocha for running tests inside vscode-source */
+ {
+     "extends": "./src/tsconfig.json",
+     "compilerOptions": {
+         "module": "commonjs",
+         "paths": {
+             "vs/*": ["./src/vs/*"]
+         },
+     },
+ }

@@ -1,0 +1,8 @@
+Include CS50 and stido
+Create the main code
+    Define the height asking in the terminal (bw 1-9)
+    Create the counter
+    Add the space in the pyramid instead of the hashes
+    Add the hashes of the left side
+    Print two spaces
+    Add the hashes of the right side

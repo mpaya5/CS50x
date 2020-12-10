@@ -1,0 +1,6 @@
+{
+    "name": "vscode-ripgrep",
+    "version": "1.0.0",
+    "description": "A module for using ripgrep in a Node project",
+    "main": "index.js"
+}
